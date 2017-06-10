@@ -14,7 +14,7 @@ class runApp {
 
   @Before
   def setup(): Unit = {
-    System.setProperty("hadoop.home.dir", "c:\\winutil")
+//    System.setProperty("hadoop.home.dir", "c:\\winutil")
 
   }
 
