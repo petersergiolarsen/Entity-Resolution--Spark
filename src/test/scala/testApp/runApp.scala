@@ -5,7 +5,7 @@ import com.google.common.io.Resources
 import org.junit.{Before, Test}
 
 /**
-  * Created by G49629 on 07-06-2017.
+  * Created by peter on 07-06-2017.
   */
 class runApp {
 

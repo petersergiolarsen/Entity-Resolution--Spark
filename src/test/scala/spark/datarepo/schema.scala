@@ -4,7 +4,7 @@ import org.apache.spark.sql.Row
 import org.apache.spark.sql.types.{StringType, StructField, StructType}
 
 /**
-  * Created by G49629 on 07-06-2017.
+  * Created by peter on 07-06-2017.
   */
 object schema {
 
