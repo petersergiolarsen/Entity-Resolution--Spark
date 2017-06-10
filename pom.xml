@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.nordea.gf.fcia.entity.resolution</groupId>
+    <artifactId>ER</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spark.version>1.6.0-cdh5.7.0</spark.version>
+        <hadoop.mincluster.version>2.6.0-mr1-cdh5.7.0</hadoop.mincluster.version>
+        <hadoop.version>2.6.0-cdh5.7.0</hadoop.version>
+        <hadoop.version.client>2.6.0-mr1-cdh5.7.0</hadoop.version.client>
+        <spark.hive>1.2.0-CDH5.3.3</spark.hive>
+        <hive.version>1.1.0-cdh5.7.0</hive.version>
+        <hadoop.test.version>2.6.0-mr1-cdh5.7.0</hadoop.test.version>
+        <kafka.client.version>cdh5-0.9.0-2.1.0-SNAPSHOT</kafka.client.version>
+        <hbase.version>1.2.0-cdh5.7.0</hbase.version>
+        <graphx.version>1.6.0-cdh5.7.0</graphx.version>
+        <mockito.version>1.9.5</mockito.version>
+        <log4j.version>1.2.17</log4j.version>
+
+        <!-- The below property fixes an age old error in Maven that prevents filtering
+            of the build time stamp (yes really) -->
+        <dev.build.timestamp>${maven.build.timestamp}</dev.build.timestamp>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+
+        <!--&lt;!&ndash; ********** Sonar Setup ********** &ndash;&gt; -->
+        <!--&lt;!&ndash; We are borrowing the FPS-teams Sonar server, contact murat.yucel@nordea.com
+            for troubleshooting. &ndash;&gt; -->
+        <!--<sonar.host.url>http://ap-advtool1s:9000/</sonar.host.url> -->
+        <!--<sonar.jdbc.url>jdbc:mysql://cma1cs0505.qaoneadr.local:3306/sonar?useUnicode=true&amp;characterEncoding=utf8</sonar.jdbc.url> -->
+        <!--<sonar.jdbc.driver>com.mysql.jdbc.Driver</sonar.jdbc.driver> -->
+
+        <!-- Distribution management - see profile section -->
+        <dist.management.repo.name>FCIA</dist.management.repo.name>
+        <dist.management.repo.url>https://ninja-nexus.oneadr.net/nexus/content/repositories/FCIA-Release</dist.management.repo.url>
+        <dist.management.snapshot.repo.name>FCIA-Snapshot</dist.management.snapshot.repo.name>
+        <dist.management.snapshot.repo.url>https://ninja-nexus.oneadr.net/nexus/content/repositories/FCIA-Snapshot</dist.management.snapshot.repo.url>
+
+        <!--&lt;!&ndash; HBase namespace used in install script for HDP Test &ndash;&gt; -->
+        <!--<hdp.hbase.namespace></hdp.hbase.namespace> -->
+        <!--<hdp.hbase.namespace.version></hdp.hbase.namespace.version> -->
+
+        <!--&lt;!&ndash; Automated integration test setup &ndash;&gt; -->
+        <!--<test.case.path></test.case.path> -->
+        <!--<test.case.files></test.case.files> -->
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>cloudera</id>
+            <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+        </repository>
+        <repository>
+            <id>conjars.org</id>
+            <url>http://conjars.org/repo</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>Cloudera</id>
+            <url>http://repository.cloudera.com/artifactory/cloudera-repos/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>${dist.management.repo.name}</id>
+            <url>${dist.management.repo.url}</url>
+        </repository>
+        <snapshotRepository>
+            <id>${dist.management.snapshot.repo.name}</id>
+            <url>${dist.management.snapshot.repo.url}</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <sourceDirectory>src/main/scala/</sourceDirectory>
+        <testSourceDirectory>src/test/scala/</testSourceDirectory>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.scala-tools</groupId>
+                    <artifactId>maven-scala-plugin</artifactId>
+                    <version>2.9.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.0.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <scalaVersion>2.10.3</scalaVersion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.scalatest</groupId>
+                <artifactId>scalatest-maven-plugin</artifactId>
+                <version>1.0</version>
+                <configuration>
+                    <reportsDirectory>target/surefire-reports</reportsDirectory>
+                    <stdout>W</stdout> <!-- Skip coloring output -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>scala-test</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.8</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass></mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.10.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_2.10</artifactId>
+            <version>3.0.0-M9</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-yarn_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-graphx_2.10</artifactId>
+            <version>${graphx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-mllib_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>transport</artifactId>
+            <version>5.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch-hadoop</artifactId>
+            <version>5.4.0</version>
+        </dependency>
+    </dependencies>
+
+
+</project>
