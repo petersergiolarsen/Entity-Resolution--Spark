@@ -36,10 +36,10 @@
         <!--<sonar.jdbc.driver>com.mysql.jdbc.Driver</sonar.jdbc.driver> -->
 
         <!-- Distribution management - see profile section -->
-        <dist.management.repo.name>FCIA</dist.management.repo.name>
-        <dist.management.repo.url>https://ninja-nexus.oneadr.net/nexus/content/repositories/FCIA-Release</dist.management.repo.url>
-        <dist.management.snapshot.repo.name>FCIA-Snapshot</dist.management.snapshot.repo.name>
-        <dist.management.snapshot.repo.url>https://ninja-nexus.oneadr.net/nexus/content/repositories/FCIA-Snapshot</dist.management.snapshot.repo.url>
+        <dist.management.repo.name></dist.management.repo.name>
+        <dist.management.repo.url></dist.management.repo.url>
+        <dist.management.snapshot.repo.name></dist.management.snapshot.repo.name>
+        <dist.management.snapshot.repo.url></dist.management.snapshot.repo.url>
 
         <!--&lt;!&ndash; HBase namespace used in install script for HDP Test &ndash;&gt; -->
         <!--<hdp.hbase.namespace></hdp.hbase.namespace> -->
@@ -68,16 +68,16 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <distributionManagement>
-        <repository>
-            <id>${dist.management.repo.name}</id>
-            <url>${dist.management.repo.url}</url>
-        </repository>
-        <snapshotRepository>
-            <id>${dist.management.snapshot.repo.name}</id>
-            <url>${dist.management.snapshot.repo.url}</url>
-        </snapshotRepository>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>${dist.management.repo.name}</id>-->
+            <!--<url>${dist.management.repo.url}</url>-->
+        <!--</repository>-->
+        <!--<snapshotRepository>-->
+            <!--<id>${dist.management.snapshot.repo.name}</id>-->
+            <!--<url>${dist.management.snapshot.repo.url}</url>-->
+        <!--</snapshotRepository>-->
+    <!--</distributionManagement>-->
 
     <build>
         <resources>
