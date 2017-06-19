@@ -10,7 +10,7 @@ import org.apache.spark.mllib.linalg.{SparseVector, Vectors}
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.{Row, SQLContext, SaveMode}
 import spark.datarepo.schema
-import util.{Compute, Jaccard}
+import utilcustom.{Compute, Jaccard}
 
 import scala.util.hashing.MurmurHash3
 

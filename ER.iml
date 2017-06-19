@@ -13,9 +13,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.10.3" level="project" />
-    <orderEntry type="library" name="Maven: org.scalatest:scalatest_2.10:3.0.0-M9" level="project" />
-    <orderEntry type="library" name="Maven: org.scalactic:scalactic_2.10:3.0.0-M9" level="project" />
-    <orderEntry type="library" name="Maven: org.scala-lang:scala-reflect:2.10.5" level="project" />
+    <orderEntry type="library" name="Maven: org.scalatest:scalatest_2.10:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-reflect:2.10.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.8.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.spark:spark-core_2.10:1.6.0-cdh5.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.avro:avro-mapred:hadoop2:1.7.6-cdh5.7.0" level="project" />
@@ -305,5 +304,21 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:log4j-over-slf4j:1.6.6" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
+    <orderEntry type="library" name="Maven: org.plotly-scala:plotly-render_2.11:0.3.1" level="project" />
+    <orderEntry type="library" name="Maven: org.plotly-scala:plotly-core_2.11:0.3.1" level="project" />
+    <orderEntry type="library" name="Maven: org.plotly-scala:circe-simple-generic_2.11:0.3.1" level="project" />
+    <orderEntry type="library" name="Maven: io.circe:circe-core_2.11:0.6.1" level="project" />
+    <orderEntry type="library" name="Maven: io.circe:circe-numbers_2.11:0.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.typelevel:cats-core_2.11:0.8.1" level="project" />
+    <orderEntry type="library" name="Maven: org.typelevel:cats-macros_2.11:0.8.1" level="project" />
+    <orderEntry type="library" name="Maven: org.typelevel:cats-kernel_2.11:0.8.1" level="project" />
+    <orderEntry type="library" name="Maven: com.github.mpilquist:simulacrum_2.11:0.10.0" level="project" />
+    <orderEntry type="library" name="Maven: org.typelevel:machinist_2.11:0.6.1" level="project" />
+    <orderEntry type="library" name="Maven: io.circe:circe-parser_2.11:0.6.1" level="project" />
+    <orderEntry type="library" name="Maven: io.circe:circe-jawn_2.11:0.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.spire-math:jawn-parser_2.11:0.10.4" level="project" />
+    <orderEntry type="library" name="Maven: com.chuusai:shapeless_2.11:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.typelevel:macro-compat_2.11:1.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars.bower:plotly.js:1.24.1" level="project" />
   </component>
 </module>

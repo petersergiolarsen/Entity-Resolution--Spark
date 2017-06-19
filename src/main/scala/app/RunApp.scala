@@ -12,7 +12,7 @@ import org.apache.spark.sql.{DataFrame, Row, SQLContext, SaveMode}
 import org.apache.spark.{SparkConf, SparkContext}
 import schema.LSHModel
 import shingles.CreateShingles
-import util.Compute
+import utilcustom.Compute
 
 /**
   * Created by peter on 06-06-2017.

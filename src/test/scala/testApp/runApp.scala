@@ -2,6 +2,7 @@ package testApp
 
 import app.RunApp
 import com.google.common.io.Resources
+import org.apache.spark.{SparkConf, SparkContext}
 import org.junit.{Before, Test}
 
 /**
@@ -14,12 +15,15 @@ class runApp {
 
   @Before
   def setup(): Unit = {
+//
 //    System.setProperty("hadoop.home.dir", "c:\\winutil")
 
   }
 
   @Test
   def test(): Unit = {
+
+
 
     val args:Array[String] = new Array[String](2)
 
